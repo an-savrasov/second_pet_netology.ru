@@ -40,6 +40,7 @@ build/
 
 ### Token ###
 /src/main/resources/config.properties
+/out/artifacts/TelegramBot_jar/TelegramBot.jar
 
 ### Mac OS ###
 .DS_Store

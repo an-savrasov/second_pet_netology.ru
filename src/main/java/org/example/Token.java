@@ -2,17 +2,17 @@ package org.example;
 
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class Token {
     private String token;
 
     public Token() {
-        FileInputStream fis;
-        Properties property = new Properties();
-        try {
-            fis = new FileInputStream("src/main/resources/config.properties");
+        try (InputStream fis = Token.class.getClassLoader().getResourceAsStream("config.properties")) {
+            Properties property = new Properties();
             property.load(fis);
             token = property.getProperty("token");
 
@@ -21,5 +21,5 @@ public class Token {
         }
     }
 
-    public String getToken() {return token;}
+        public String getToken() {return token;}
 }

@@ -2,15 +2,14 @@ package org.example;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class Configuration {
     private String URL;
     public Configuration() {
-        FileInputStream fis;
-        Properties property = new Properties();
-        try {
-            fis = new FileInputStream("src/main/resources/config.properties");
+            try (InputStream fis = Configuration.class.getClassLoader().getResourceAsStream("config.properties")) {
+            Properties property = new Properties();
             property.load(fis);
             URL = property.getProperty("URL");
 
